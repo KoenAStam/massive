@@ -5,6 +5,10 @@ readFCSmeta <- function(path = "."){
     FCSPaths <- list.files(path=path, pattern=".fcs", full.names=TRUE)
     FCSNames <- list.files(path=path, pattern=".fcs", full.names=FALSE)
 
+    if(length(FCSPaths) == 0){
+        stop("path contains no .fcs files")
+    }
+
     FCSMeta <- data.frame(FCSFiles=FCSNames,
                            date=character(length(FCSNames)),
                            channels=numeric(length(FCSNames)),
