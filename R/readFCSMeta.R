@@ -1,7 +1,7 @@
 #' Create data table from .fcs files
 #'
 #' @export
-readFCSmeta <- function(path = "."){
+readFCSMeta <- function(path = "."){
     FCSPaths <- list.files(path=path, pattern=".fcs", full.names=TRUE)
     FCSNames <- list.files(path=path, pattern=".fcs", full.names=FALSE)
 

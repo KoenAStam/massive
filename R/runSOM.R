@@ -1,4 +1,4 @@
-#'
+#' Run SOM
 #'
 runSOM <- function(FCSData, xdim=15, ydim=15, iter=10){
 

@@ -5,7 +5,6 @@
 #' files. It will only keep relevant channels and renames them according to
 #' the `FCSMeta` parameter.
 #'
-#'
 #' @param path A character string indicating the location of the .fcs files. The
 #' default corresponds to the working directory
 #' @param FCSMeta A list holding meta information on the .fcs files. The default
