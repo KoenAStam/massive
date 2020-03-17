@@ -71,7 +71,7 @@ readFCSFiles <- function(path=".", FCSMeta, asinh5=TRUE, downsampling){
                                     exprs))
 
         if(i == length(FCSNames)){
-            cat("\rreading FCS file: done")
+            cat("\rreading FCS file: done\n")
         }
     }
 
