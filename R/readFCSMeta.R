@@ -1,7 +1,7 @@
 #' Create data table from .fcs files
 #'
 #' @export
-readFCSMeta <- function(path = "."){
+readFCSMeta <- function(path = ".", panel){
     FCSPaths <- list.files(path=path, pattern=".fcs", full.names=TRUE)
     FCSNames <- list.files(path=path, pattern=".fcs", full.names=FALSE)
 
@@ -28,15 +28,25 @@ readFCSMeta <- function(path = "."){
     }
 
     channels <- data.frame(channelID=unname(FCSHeaders[[1]][channelID]),
-                           markerID=unname(FCSHeaders[[1]][markerID]),
+                           markerLabel=unname(FCSHeaders[[1]][markerID]),
                            markerClass="unknown",
                            stringsAsFactors=FALSE)
 
     for(i in seq_len(nrow(channels))){
-        if(grepl("CD",
-                 gsub("[[:punct:]]|[[:space:]]", "", channels[i,"markerID"]))){
-            channels[i, "markerClass"] <- "lineage"
+
+        if(missing(panel)){
+            panel <- data(markers)
         }
+
+        markerClean <- gsub("[[:punct:]]|[[:space:]]", "",
+                            channels[i,"markerLabel"])
+        markerNr <- match(toupper(markerClean), panel[,1])
+
+        if(is.na(markerNr)){
+            warning(markerClean, " could not be matched to the panel")
+            next
+        }
+        channels[i, 2:3] <- as.character(panel[markerNr, 2:3])
     }
 
     return(list(path=path,

@@ -64,7 +64,7 @@ readFCSFiles <- function(path=".", FCSMeta, asinh5=TRUE, downsampling){
         if(asinh5 == TRUE){
             exprs <- asinh(exprs/5)
         }
-        colnames(exprs) <- keepChannels[,"markerID"]
+        colnames(exprs) <- keepChannels[,"markerLabel"]
 
         FCSexpr <- rbind(FCSexpr,
                          data.frame(sampleID=FCSNames[i],
