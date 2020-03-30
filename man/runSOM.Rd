@@ -4,7 +4,7 @@
 \alias{runSOM}
 \title{Run SOM}
 \usage{
-runSOM(FCSData, xdim = 15, ydim = 15, iter = 10)
+runSOM(x, xdim = 15, ydim = 15, iter = 20)
 }
 \description{
 Run SOM
